@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Elias Rivera — Full Stack CMS Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f7ff;--surface:#fff;--surface2:#f0f2ff;--surface3:#e8ebff;
+  --accent:#4f46e5;--accent2:#7c3aed;
+  --grad:linear-gradient(135deg,#4f46e5,#7c3aed);
+  --text:#0f0f1a;--muted:#6b7280;--border:#e4e6f0;
+  --drupal:#7c3aed;--drupal-bg:#f3eeff;
+  --wp:#2563eb;--wp-bg:#eff4ff;
+  --woo:#c2410c;--woo-bg:#fff2ed;
+  --gov:#065f46;--gov-bg:#ecfdf5;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --radius:12px;
+  --shadow:0 2px 16px rgba(79,70,229,.07);
+  --shadow-lg:0 8px 40px rgba(79,70,229,.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.anim{opacity:0;animation:fadeUp .5s ease forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.22s}.d4{animation-delay:.32s}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(245,247,255,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--grad);flex-shrink:0}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--grad)!important;color:#fff!important;padding:.4rem 1.1rem;border-radius:8px;font-weight:600!important}
+
+/* HERO */
+.hero{max-width:1100px;margin:0 auto;padding:5.5rem 3rem 4rem;display:grid;grid-template-columns:1fr 210px;gap:3rem;align-items:start}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--accent);background:var(--surface3);border:1px solid rgba(79,70,229,.2);padding:5px 13px;border-radius:8px;margin-bottom:1.25rem}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s ease infinite;display:inline-block}
+h1{font-family:var(--font-display);font-size:clamp(2.4rem,4vw,3.3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.25rem}
+h1 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-bio{font-size:1rem;font-weight:300;color:var(--muted);max-width:560px;line-height:1.82;margin-bottom:2rem}
+.ctas{display:flex;gap:9px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:.62rem 1.35rem;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;transition:all .18s;border:none;cursor:pointer;font-family:var(--font-body);letter-spacing:-.01em}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 4px 14px rgba(79,70,229,.25)}
+.btn-p:hover{opacity:.88;transform:translateY(-1px)}
+.btn-g{background:var(--surface);color:var(--text);border:1.5px solid var(--border)}
+.btn-g:hover{border-color:#a5b4fc;background:var(--surface2)}
+
+.stats-col{display:flex;flex-direction:column;gap:.8rem;padding-top:.25rem}
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;text-align:center;box-shadow:var(--shadow)}
+.sval{font-family:var(--font-display);font-size:1.8rem;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.slbl{font-size:10.5px;color:var(--muted);margin-top:2px;font-weight:500}
+
+/* STACK STRIP */
+.stack-strip{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 3rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.stack-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-right:.4rem}
+.stack-pill{font-size:12px;font-weight:500;padding:4px 12px;border-radius:6px;background:var(--surface2);color:var(--accent);border:1px solid rgba(79,70,229,.15)}
+
+/* DIVIDER / SECTION */
+.divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto}
+.section{max-width:1100px;margin:0 auto;padding:4rem 3rem}
+.sec-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.3rem}
+.sec-title{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--text);margin-bottom:1.75rem;letter-spacing:-.025em}
+
+/* FILTERS */
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem}
+.fb{font-size:12.5px;font-weight:600;padding:5px 14px;border-radius:7px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;color:var(--muted);font-family:var(--font-body);transition:all .15s}
+.fb:hover{border-color:#a5b4fc;color:var(--accent)}
+.fb.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.fb.fd.on{background:var(--drupal);border-color:var(--drupal)}
+.fb.fw.on{background:var(--wp);border-color:var(--wp)}
+.fb.fc.on{background:var(--woo);border-color:var(--woo)}
+
+/* PROJECT GRID */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.pcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:box-shadow .2s,transform .2s,border-color .2s;display:flex;flex-direction:column}
+.pcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:#c7d2fe}
+.pcard.gone{display:none}
+.pthumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.4rem}
+.tb{background:linear-gradient(135deg,#dbeafe,#c7d2fe)}.tp{background:linear-gradient(135deg,#ede9fe,#ddd6fe)}.tg{background:linear-gradient(135deg,#d1fae5,#a7f3d0)}.to{background:linear-gradient(135deg,#ffedd5,#fed7aa)}.tt{background:linear-gradient(135deg,#ccfbf1,#99f6e4)}.tr{background:linear-gradient(135deg,#fee2e2,#fecaca)}.ty{background:linear-gradient(135deg,#fef9c3,#fef08a)}.ti{background:linear-gradient(135deg,#e0e7ff,#c7d2fe)}.tpk{background:linear-gradient(135deg,#fce7f3,#fbcfe8)}.ts{background:linear-gradient(135deg,#f1f5f9,#e2e8f0)}.tl{background:linear-gradient(135deg,#ecfccb,#d9f99d)}.tsk{background:linear-gradient(135deg,#e0f2fe,#bae6fd)}
+.pbody{padding:1.15rem 1.2rem 1.4rem;flex:1;display:flex;flex-direction:column}
+.ptags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.6rem}
+.tag{font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:5px}
+.td{background:var(--drupal-bg);color:var(--drupal)}.tw{background:var(--wp-bg);color:var(--wp)}.tc{background:var(--woo-bg);color:var(--woo)}.tgov{background:var(--gov-bg);color:var(--gov)}.tedu{background:#fef9c3;color:#854d0e}.tnp{background:#fce7f3;color:#9d174d}.tind{background:#f1f5f9;color:#334155}.thlt{background:#f0fdfa;color:#0f766e}
+.pname{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.4rem;line-height:1.3;letter-spacing:-.02em}
+.pdesc{font-size:13px;color:var(--muted);line-height:1.65;flex:1;margin-bottom:.9rem;font-weight:300}
+.pfoot{display:flex;align-items:center;justify-content:space-between}
+.plink{font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none}
+.plink:hover{text-decoration:underline}
+.plink::after{content:' ↗';font-size:11px}
+.cbadge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.04em;text-transform:uppercase}
+.cbd{background:var(--drupal-bg);color:var(--drupal)}.cbw{background:var(--wp-bg);color:var(--wp)}.cbc{background:var(--woo-bg);color:var(--woo)}
+
+/* CURRENTLY INVESTING IN */
+.invest-banner{background:var(--grad);border-radius:16px;padding:1.75rem 2rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.invest-left{display:flex;align-items:center;gap:14px}
+.invest-icon{width:46px;height:46px;border-radius:11px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.invest-text h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:3px;letter-spacing:-.02em}
+.invest-text p{font-size:13px;color:rgba(255,255,255,.72);font-weight:300;line-height:1.5}
+.invest-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap}
+.invest-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s ease infinite;display:inline-block}
+.invest-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-bottom:1.1rem}
+.icard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:border-color .2s,box-shadow .2s}
+.icard:hover{border-color:#a5b4fc;box-shadow:var(--shadow)}
+.icard-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:.9rem}
+.icard-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.ii-blue{background:linear-gradient(135deg,#dbeafe,#c7d2fe)}
+.ii-purple{background:linear-gradient(135deg,#ede9fe,#ddd6fe)}
+.icard-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-bottom:2px}
+.icard-sub{font-size:12px;color:var(--accent);font-weight:600}
+.icard-desc{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:1rem}
+.ipills{display:flex;gap:6px;flex-wrap:wrap}
+.ipill{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:6px;background:var(--surface2);color:var(--accent);border:1px solid rgba(79,70,229,.15)}
+.ipill.green{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}
+.ipill.orange{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
+.invest-why{background:var(--surface2);border:1px solid rgba(79,70,229,.15);border-radius:12px;padding:1.25rem 1.5rem;display:flex;gap:12px;align-items:flex-start}
+.invest-why-icon{font-size:1.1rem;margin-top:1px;flex-shrink:0}
+.invest-why-text{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+.invest-why-text strong{color:var(--text);font-weight:600}
+
+/* EXPERIENCE */
+.timeline{display:flex;flex-direction:column}
+.trow{display:grid;grid-template-columns:190px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--border)}
+.trow:last-child{border-bottom:none}
+.tdate{font-size:12.5px;color:var(--muted);line-height:1.55}
+.tdate strong{display:block;font-size:13px;color:var(--text);font-weight:600;margin-bottom:2px;font-family:var(--font-display)}
+.tyears{display:inline-block;font-size:10.5px;font-weight:600;background:var(--surface2);border:1px solid rgba(79,70,229,.15);color:var(--accent);padding:2px 9px;border-radius:5px;margin-top:4px}
+.tjob{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:2px;letter-spacing:-.02em}
+.tco{font-size:13.5px;color:var(--accent);font-weight:600;margin-bottom:.65rem}
+.tdesc{font-size:13.5px;color:var(--muted);line-height:1.72;font-weight:300}
+
+/* EDUCATION */
+.edugrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.ec{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.35rem;transition:border-color .2s,box-shadow .2s}
+.ec:hover{border-color:#a5b4fc;box-shadow:var(--shadow)}
+.ec-icon{font-size:1.5rem;margin-bottom:.7rem}
+.ec-deg{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.35;font-family:var(--font-display);letter-spacing:-.01em}
+.ec-sch{font-size:12.5px;color:var(--accent);font-weight:600;margin-bottom:3px}
+.ec-yr{font-size:11.5px;color:var(--muted)}
+
+/* SKILLS */
+.skillsgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.sg{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.35rem}
+.sg-t{font-size:13px;font-weight:700;margin-bottom:1rem;font-family:var(--font-display);letter-spacing:-.01em}
+.sr{margin-bottom:.75rem}.sr:last-child{margin-bottom:0}
+.sm{display:flex;justify-content:space-between;margin-bottom:5px}
+.sn{font-size:12.5px;color:var(--text);font-weight:500}.sy{font-size:11px;color:var(--muted)}
+.sbg{height:4px;background:var(--surface2);border-radius:99px;overflow:hidden;border:1px solid var(--border)}
+.sf{height:100%;border-radius:99px;background:var(--grad)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.35rem}
+.cc{background:var(--grad);color:#fff;border-radius:16px;padding:2.75rem;display:flex;flex-direction:column;justify-content:space-between}
+.cc h2{font-family:var(--font-display);font-size:1.75rem;font-weight:700;line-height:1.2;margin-bottom:.9rem;letter-spacing:-.025em}
+.cc p{font-size:14px;opacity:.82;line-height:1.75;font-weight:300}
+.avail{margin-top:2rem;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:7px 14px;border-radius:8px;font-size:12.5px;font-weight:600}
+.adot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s ease infinite}
+.cinfo{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.75rem}
+.cinfo h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:-.02em}
+.citems{display:flex;flex-direction:column;gap:1rem}
+.cit{display:flex;align-items:center;gap:12px}
+.cico{width:38px;height:38px;border-radius:9px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.cdet{display:flex;flex-direction:column}
+.clbl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+.cval{font-size:13.5px;color:var(--text);font-weight:500}
+.cval a{color:var(--accent);text-decoration:none;font-weight:600}
+.cval a:hover{text-decoration:underline}
+
+.pcount{font-size:11.5px;color:var(--accent);background:var(--surface2);border:1px solid rgba(79,70,229,.15);padding:2px 10px;border-radius:5px;margin-left:.6rem;vertical-align:middle;font-weight:700}
+
+footer{text-align:center;padding:2.5rem 3rem;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+
+@media(max-width:800px){
+  nav{padding:.9rem 1.5rem}
+  .nav-links li:not(:last-child){display:none}
+  .hero{grid-template-columns:1fr;padding:3rem 1.5rem 2rem;gap:1.5rem}
+  .stats-col{flex-direction:row;flex-wrap:wrap}
+  .scard{flex:1;min-width:80px}
+  .stack-strip{padding:.9rem 1.5rem}
+  .section{padding:3rem 1.5rem}
+  .trow{grid-template-columns:1fr;gap:.5rem}
+  .invest-cards{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#"><span class="nav-logo-dot"></span>Elias Rivera</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#learning">Learning</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact" class="nav-cta">Hire me →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-badge anim d1"><span class="badge-dot"></span>Open to remote opportunities</div>
+    <h1 class="anim d2">Full Stack<br><span>CMS Engineer</span><br>&amp; Web Developer</h1>
+    <p class="hero-bio anim d3">12+ years in software development specializing in WordPress and Drupal. Full lifecycle experience — building from scratch to long-term maintenance — for 40+ projects including Denver International Airport, government agencies, universities, and nonprofits. PHP · JS · CSS · Git · Kinsta · WP Engine · Pantheon · Rancher. Two master's degrees in IT. Based in Quito, Ecuador · Remote worldwide.</p>
+    <div class="ctas anim d4">
+      <a href="#contact" class="btn btn-p">Get in touch →</a>
+      <a href="#projects" class="btn btn-g">View work</a>
+      <a href="https://www.linkedin.com/in/riveraelias/" target="_blank" class="btn btn-g">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="stats-col anim d3">
+    <div class="scard"><div class="sval">12+</div><div class="slbl">Years exp.</div></div>
+    <div class="scard"><div class="sval">40+</div><div class="slbl">Projects</div></div>
+    <div class="scard"><div class="sval">2×</div><div class="slbl">Master's</div></div>
+    <div class="scard"><div class="sval">2</div><div class="slbl">CMS platforms</div></div>
+  </div>
+</div>
+
+<!-- STACK STRIP -->
+<div class="stack-strip">
+  <span class="stack-label">Core stack</span>
+  <span class="stack-pill">PHP</span><span class="stack-pill">JavaScript</span><span class="stack-pill">CSS</span><span class="stack-pill">SQL</span><span class="stack-pill">Git</span><span class="stack-pill">WordPress</span><span class="stack-pill">Drupal</span><span class="stack-pill">WooCommerce</span><span class="stack-pill">DDev</span><span class="stack-pill">WP Engine</span><span class="stack-pill">Pantheon</span><span class="stack-pill">Kinsta</span><span class="stack-pill">Rancher</span>
+</div>
+
+<div class="divider" style="margin-top:0"></div>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="sec-eyebrow">Work</div>
+  <div style="display:flex;align-items:baseline;gap:.5rem;margin-bottom:1.5rem">
+    <div class="sec-title" style="margin-bottom:0">Selected projects</div>
+    <span class="pcount" id="pc">19 projects</span>
+  </div>
+  <div class="filters">
+    <button class="fb on" data-f="all">All</button>
+    <button class="fb fd" data-f="drupal">🟣 Drupal</button>
+    <button class="fb fw" data-f="wp">🔵 WordPress</button>
+    <button class="fb fc" data-f="woo">🟠 WooCommerce</button>
+  </div>
+  <div class="pgrid" id="pg">
+
+    <!-- WORDPRESS FIRST -->
+    <div class="pcard" data-cms="wp"><div class="pthumb tsk">✈️</div><div class="pbody"><div class="ptags"><span class="tag tw">WordPress</span><span class="tag tind">Aviation</span></div><div class="pname">Denver International Airport (DEN)</div><p class="pdesc">One of North America's busiest airports. High-traffic WordPress site serving millions of travelers with real-time info and terminal guides.</p><div class="pfoot"><a href="https://www.flydenver.com/" target="_blank" class="plink">flydenver.com</a><span class="cbadge cbw">WordPress</span></div></div></div>
+    <div class="pcard" data-cms="wp"><div class="pthumb tt">💊</div><div class="pbody"><div class="ptags"><span class="tag tw">WordPress</span><span class="tag thlt">Health</span></div><div class="pname">Ubiquinol</div><p class="pdesc">Health supplement brand and educational hub. SEO-optimized WordPress build with research articles and a clean consumer product experience.</p><div class="pfoot"><a href="https://ubiquinol.org/" target="_blank" class="plink">ubiquinol.org</a><span class="cbadge cbw">WordPress</span></div></div></div>
+    <div class="pcard" data-cms="wp"><div class="pthumb tb">⚖️</div><div class="pbody"><div class="ptags"><span class="tag tw">WordPress</span><span class="tag tgov">Government</span></div><div class="pname">Wyoming Judicial Branch</div><p class="pdesc">Official state court system. Accessibility-first WordPress build with court records, filing info, and judicial resources statewide.</p><div class="pfoot"><a href="https://www.wyocourts.gov/" target="_blank" class="plink">wyocourts.gov</a><span class="cbadge cbw">WordPress</span></div></div></div>
+    <div class="pcard" data-cms="wp"><div class="pthumb ty">🎮</div><div class="pbody"><div class="ptags"><span class="tag tw">WordPress</span><span class="tag tnp">Nonprofit / Cultural</span></div><div class="pname">The Strong National Museum of Play</div><p class="pdesc">America's only museum dedicated to the study of play — WordPress site for a major cultural institution in Rochester, NY.</p><div class="pfoot"><a href="https://www.museumofplay.org/" target="_blank" class="plink">museumofplay.org</a><span class="cbadge cbw">WordPress</span></div></div></div>
+    <div class="pcard" data-cms="wp"><div class="pthumb tnp">🧒</div><div class="pbody"><div class="ptags"><span class="tag tw">WordPress</span><span class="tag tnp">Nonprofit</span></div><div class="pname">Advocates for Children (CASA)</div><p class="pdesc">WordPress site for a CASA nonprofit recruiting and supporting volunteer advocates for children in foster care — focused on community engagement and volunteer conversion.</p><div class="pfoot"><a href="https://adv4children.org/" target="_blank" class="plink">adv4children.org</a><span class="cbadge cbw">WordPress</span></div></div></div>
+    <div class="pcard" data-cms="wp"><div class="pthumb tt">🧘</div><div class="pbody"><div class="ptags"><span class="tag tw">WordPress</span><span class="tag thlt">Health & Wellness</span></div><div class="pname">Mindworks</div><p class="pdesc">Meditation and mindfulness platform offering authentic Buddhist-inspired courses. Content-rich WordPress site with course catalog, membership integration, and a global audience.</p><div class="pfoot"><a href="https://mindworks.org/" target="_blank" class="plink">mindworks.org</a><span class="cbadge cbw">WordPress</span></div></div></div>
+    <div class="pcard" data-cms="wp"><div class="pthumb tl">🚐</div><div class="pbody"><div class="ptags"><span class="tag tw">WordPress</span><span class="tag tind">Travel / Rental</span></div><div class="pname">Native Campervans</div><p class="pdesc">Campervan rental company operating across Denver, Salt Lake City, Las Vegas, Phoenix, and Los Angeles. WordPress site with location pages, van catalog, pricing, and booking flow.</p><div class="pfoot"><a href="https://nativecampervans.com/" target="_blank" class="plink">nativecampervans.com</a><span class="cbadge cbw">WordPress</span></div></div></div>
+
+    <!-- DRUPAL -->
+    <div class="pcard" data-cms="drupal"><div class="pthumb tp">🏛️</div><div class="pbody"><div class="ptags"><span class="tag td">Drupal</span><span class="tag tind">Engineering</span></div><div class="pname">AIME — American Institute of Mining Engineers</div><p class="pdesc">Drupal platform for one of the oldest engineering societies in the US — member management, awards, scholarships, and oral history archives.</p><div class="pfoot"><a href="https://aimehq.org/" target="_blank" class="plink">aimehq.org</a><span class="cbadge cbd">Drupal</span></div></div></div>
+    <div class="pcard" data-cms="drupal"><div class="pthumb tg">🏛️</div><div class="pbody"><div class="ptags"><span class="tag td">Drupal</span><span class="tag tgov">Government</span></div><div class="pname">Adams County, Colorado</div><p class="pdesc">Official county government site serving hundreds of thousands of residents. Accessibility-first Drupal build for public services and civic info.</p><div class="pfoot"><a href="https://adamscountyco.gov/" target="_blank" class="plink">adamscountyco.gov</a><span class="cbadge cbd">Drupal</span></div></div></div>
+    <div class="pcard" data-cms="drupal"><div class="pthumb tsk">✈️</div><div class="pbody"><div class="ptags"><span class="tag td">Drupal</span><span class="tag tind">Aviation</span></div><div class="pname">Ontario International Airport</div><p class="pdesc">Official site for Ontario International Airport in Southern California — Drupal build serving travelers with flight info, parking, terminal maps, and airport services.</p><div class="pfoot"><a href="https://www.flyontario.com/" target="_blank" class="plink">flyontario.com</a><span class="cbadge cbd">Drupal</span></div></div></div>
+    <div class="pcard" data-cms="drupal"><div class="pthumb tr">💙</div><div class="pbody"><div class="ptags"><span class="tag td">Drupal</span><span class="tag tnp">Nonprofit / Health</span></div><div class="pname">We Face It Together</div><p class="pdesc">Addiction recovery nonprofit offering peer coaching and support. Bilingual (EN/ES) Drupal platform designed to help individuals and loved ones navigate the path to wellness.</p><div class="pfoot"><a href="https://www.wefaceittogether.org/" target="_blank" class="plink">wefaceittogether.org</a><span class="cbadge cbd">Drupal</span></div></div></div>
+    <div class="pcard" data-cms="drupal"><div class="pthumb ts">🚜</div><div class="pbody"><div class="ptags"><span class="tag td">Drupal</span><span class="tag tind">Industrial</span></div><div class="pname">Danuser</div><p class="pdesc">Product catalog for a leading manufacturer of industrial and agricultural equipment attachments — complex taxonomy and dealer locator.</p><div class="pfoot"><a href="https://www.danuser.com/" target="_blank" class="plink">danuser.com</a><span class="cbadge cbd">Drupal</span></div></div></div>
+    <div class="pcard" data-cms="drupal"><div class="pthumb to">🏢</div><div class="pbody"><div class="ptags"><span class="tag td">Drupal</span><span class="tag tind">Real Estate</span></div><div class="pname">Price Edwards & Company</div><p class="pdesc">Commercial real estate firm in Oklahoma. Drupal site with property listings, team profiles, and market research resources.</p><div class="pfoot"><a href="https://www.priceedwards.com/" target="_blank" class="plink">priceedwards.com</a><span class="cbadge cbd">Drupal</span></div></div></div>
+    <div class="pcard" data-cms="drupal"><div class="pthumb ti">🎓</div><div class="pbody"><div class="ptags"><span class="tag td">Drupal</span><span class="tag tedu">Higher Education</span></div><div class="pname">Rockhurst University</div><p class="pdesc">Full university site for a Jesuit institution in Kansas City — admissions, programs, faculty, events, and multi-department content.</p><div class="pfoot"><a href="https://www.rockhurst.edu/" target="_blank" class="plink">rockhurst.edu</a><span class="cbadge cbd">Drupal</span></div></div></div>
+
+    <!-- WOOCOMMERCE -->
+    <div class="pcard" data-cms="woo"><div class="pthumb to">🛒</div><div class="pbody"><div class="ptags"><span class="tag tc">WooCommerce</span><span class="tag tind">eCommerce</span></div><div class="pname">NewQ</div><p class="pdesc">Full WooCommerce store with custom product pages, optimized checkout flows, and performance tuning for high conversion.</p><div class="pfoot"><a href="https://newq.com/" target="_blank" class="plink">newq.com</a><span class="cbadge cbc">WooCommerce</span></div></div></div>
+    <div class="pcard" data-cms="woo"><div class="pthumb tr">❤️</div><div class="pbody"><div class="ptags"><span class="tag tc">WooCommerce</span><span class="tag tnp">Nonprofit</span></div><div class="pname">Project C.U.R.E.</div><p class="pdesc">Donation and medical supply platform for the world's largest distributor of donated medical equipment — global humanitarian mission.</p><div class="pfoot"><a href="https://projectcure.org/" target="_blank" class="plink">projectcure.org</a><span class="cbadge cbc">WooCommerce</span></div></div></div>
+    <div class="pcard" data-cms="woo"><div class="pthumb tl">🔧</div><div class="pbody"><div class="ptags"><span class="tag tc">WooCommerce</span><span class="tag tind">Home Services</span></div><div class="pname">Paschal Air, Plumbing & Electric</div><p class="pdesc">Service booking and ecommerce for a major HVAC, plumbing, and electrical company — packages, promotions, and lead generation.</p><div class="pfoot"><a href="https://gopaschal.com/" target="_blank" class="plink">gopaschal.com</a><span class="cbadge cbc">WooCommerce</span></div></div></div>
+    <div class="pcard" data-cms="woo"><div class="pthumb ti">📊</div><div class="pbody"><div class="ptags"><span class="tag tc">WooCommerce</span><span class="tag tind">Consulting</span></div><div class="pname">TischlerBise</div><p class="pdesc">Fiscal and planning consulting firm. WooCommerce-enabled for reports and publications with a clean professional brand site.</p><div class="pfoot"><a href="https://tischlerbise.com/" target="_blank" class="plink">tischlerbise.com</a><span class="cbadge cbc">WooCommerce</span></div></div></div>
+    <div class="pcard" data-cms="woo"><div class="pthumb tpk">⚡</div><div class="pbody"><div class="ptags"><span class="tag tc">WooCommerce</span><span class="tag tind">Energy</span></div><div class="pname">Jaxon Energy Management</div><p class="pdesc">Energy management platform. WooCommerce integration for service offerings and client acquisition for a modern energy solutions provider.</p><div class="pfoot"><a href="https://www.jaxon-em.com/" target="_blank" class="plink">jaxon-em.com</a><span class="cbadge cbc">WooCommerce</span></div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CURRENTLY INVESTING IN -->
+<section class="section" id="learning">
+  <div class="sec-eyebrow">Growth</div>
+  <div class="sec-title">Currently investing in</div>
+
+  <div class="invest-banner">
+    <div class="invest-left">
+      <div class="invest-icon">🚀</div>
+      <div class="invest-text">
+        <h3>Expanding into modern web development</h3>
+        <p>Actively building on my CMS foundation with next-generation tools and workflows</p>
+      </div>
+    </div>
+    <div class="invest-badge"><span class="invest-dot"></span>In progress · 2026</div>
+  </div>
+
+  <div class="invest-cards">
+    <div class="icard">
+      <div class="icard-header">
+        <div class="icard-icon ii-blue">⚛️</div>
+        <div>
+          <div class="icard-title">Headless WordPress + Next.js</div>
+          <div class="icard-sub">WP REST API · WPGraphQL · React</div>
+        </div>
+      </div>
+      <p class="icard-desc">Expanding into headless WordPress architecture — using WordPress as a powerful backend CMS while delivering blazing-fast frontends with Next.js and React. Bridging 9+ years of deep CMS expertise with modern frontend development.</p>
+      <div class="ipills">
+        <span class="ipill">Next.js</span>
+        <span class="ipill">React</span>
+        <span class="ipill">WPGraphQL</span>
+        <span class="ipill">WP REST API</span>
+        <span class="ipill">TypeScript</span>
+      </div>
+    </div>
+    <div class="icard">
+      <div class="icard-header">
+        <div class="icard-icon ii-purple">🤖</div>
+        <div>
+          <div class="icard-title">AI-assisted development</div>
+          <div class="icard-sub">Copilot · Cursor · Claude</div>
+        </div>
+      </div>
+      <p class="icard-desc">Integrating AI-powered tools into my daily development workflow to write cleaner code faster, accelerate debugging, and stay ahead of the curve. Not replacing craft — augmenting it.</p>
+      <div class="ipills">
+        <span class="ipill green">GitHub Copilot</span>
+        <span class="ipill green">Cursor</span>
+        <span class="ipill green">Claude</span>
+        <span class="ipill orange">Prompt engineering</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="invest-why">
+    <div class="invest-why-icon">💡</div>
+    <div class="invest-why-text"><strong>Why this matters:</strong> Most React developers don't understand WordPress deeply — and most WordPress developers don't know React. Headless WP sits at that intersection, making developers with both skill sets genuinely rare. Combined with AI tooling fluency, this positions me for the next wave of high-value remote work.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="sec-eyebrow">Career</div>
+  <div class="sec-title">Work experience</div>
+  <div class="timeline">
+    <div class="trow"><div class="tdate"><strong>Sep 2020 — Apr 2026</strong>Denver, CO · Remote<span class="tyears">5 yrs 8 mos</span></div><div><div class="tjob">WordPress & Drupal Developer</div><div class="tco">Fruition</div><div class="tdesc">Full project lifecycle — building new WP and Drupal sites from scratch plus ongoing support and maintenance. Clients included Denver International Airport, Wyoming Judicial Branch, The Strong Museum of Play, AIME, Adams County, Danuser, and more. Deployed on Kinsta, WP Engine, Pantheon, and Rancher.</div></div></div>
+    <div class="trow"><div class="tdate"><strong>Apr 2018 — Sep 2020</strong>Ecuador · Remote<span class="tyears">2 yrs 6 mos</span></div><div><div class="tjob">Drupal Developer</div><div class="tco">WorkMote</div><div class="tdesc">Developed and maintained Drupal-based web applications for international clients. Custom module development, theming, and performance optimization in a fully remote environment.</div></div></div>
+    <div class="trow"><div class="tdate"><strong>Apr 2013 — Feb 2015</strong><span class="tyears">1 yr 11 mos</span></div><div><div class="tjob">Back End Developer</div><div class="tco">Oshyn, Inc</div><div class="tdesc">Sitecore and .NET Back End Developer — enterprise-grade web applications for digital agency clients.</div></div></div>
+    <div class="trow"><div class="tdate"><strong>Jun 2011 — Oct 2012</strong><span class="tyears">1 yr 5 mos</span></div><div><div class="tjob">IT Engineer</div><div class="tco">Devsu</div><div class="tdesc">Drupal Software Developer — custom module work, theme development, and full client site delivery.</div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="sec-eyebrow">Academic background</div>
+  <div class="sec-title">Education</div>
+  <div class="edugrid">
+    <div class="ec"><div class="ec-icon">🇦🇺</div><div class="ec-deg">Master of Information Systems, IT Management</div><div class="ec-sch">University of Melbourne</div><div class="ec-yr">2015 – 2017 · Melbourne, Australia</div></div>
+    <div class="ec"><div class="ec-icon">🎓</div><div class="ec-deg">IT Management Master's, IT Project Management</div><div class="ec-sch">Escuela Politécnica Nacional (EPN)</div><div class="ec-yr">2010 – 2012 · Quito, Ecuador</div></div>
+    <div class="ec"><div class="ec-icon">🏛️</div><div class="ec-deg">IT Engineer, Information Technology</div><div class="ec-sch">Pontificia Universidad Católica del Ecuador</div><div class="ec-yr">2000 – 2005 · Quito, Ecuador</div></div>
+    <div class="ec"><div class="ec-icon">📚</div><div class="ec-deg">Bachelor of Science (B.S.)</div><div class="ec-sch">Colegio La Salle Quito</div><div class="ec-yr">1993 – 1999 · Quito, Ecuador</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="sec-eyebrow">Expertise</div>
+  <div class="sec-title">Skills & tools</div>
+  <div class="skillsgrid">
+    <div class="sg"><div class="sg-t">🧩 CMS Platforms</div>
+      <div class="sr"><div class="sm"><span class="sn">WordPress</span><span class="sy">5+ yrs</span></div><div class="sbg"><div class="sf" style="width:92%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">Drupal</span><span class="sy">9+ yrs</span></div><div class="sbg"><div class="sf" style="width:90%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">WooCommerce</span><span class="sy">3+ yrs</span></div><div class="sbg"><div class="sf" style="width:80%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">Sitecore / .NET</span><span class="sy">2 yrs</span></div><div class="sbg"><div class="sf" style="width:55%"></div></div></div>
+    </div>
+    <div class="sg"><div class="sg-t">💻 Languages</div>
+      <div class="sr"><div class="sm"><span class="sn">PHP</span><span class="sy">12+ yrs</span></div><div class="sbg"><div class="sf" style="width:93%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">HTML / CSS</span><span class="sy">12+ yrs</span></div><div class="sbg"><div class="sf" style="width:95%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">JavaScript</span><span class="sy">8+ yrs</span></div><div class="sbg"><div class="sf" style="width:74%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">SQL / MySQL</span><span class="sy">10+ yrs</span></div><div class="sbg"><div class="sf" style="width:82%"></div></div></div>
+    </div>
+    <div class="sg"><div class="sg-t">🛠️ Tools & Hosting</div>
+      <div class="sr"><div class="sm"><span class="sn">Git / GitHub</span></div><div class="sbg"><div class="sf" style="width:90%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">DDev</span></div><div class="sbg"><div class="sf" style="width:85%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">WP Engine / Kinsta</span></div><div class="sbg"><div class="sf" style="width:85%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">Pantheon</span></div><div class="sbg"><div class="sf" style="width:85%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">Rancher</span></div><div class="sbg"><div class="sf" style="width:68%"></div></div></div>
+    </div>
+    <div class="sg"><div class="sg-t">🌐 Specializations</div>
+      <div class="sr"><div class="sm"><span class="sn">Accessibility (WCAG)</span></div><div class="sbg"><div class="sf" style="width:82%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">Gov & Enterprise CMS</span></div><div class="sbg"><div class="sf" style="width:90%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">IT Strategy & Management</span></div><div class="sbg"><div class="sf" style="width:80%"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sn">Remote collaboration</span></div><div class="sbg"><div class="sf" style="width:97%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="sec-eyebrow">Get in touch</div>
+  <div class="sec-title">Let's work together</div>
+  <div class="contact-grid">
+    <div class="cc">
+      <div>
+        <h2>Open to remote roles &amp; freelance projects</h2>
+        <p>12+ years CMS expertise across WordPress, Drupal, and WooCommerce. Two master's degrees in IT. Proven on government, education, nonprofit, and commercial projects. US timezone friendly from Quito, Ecuador.</p>
+      </div>
+      <div class="avail"><span class="adot"></span>Currently available</div>
+    </div>
+    <div class="cinfo">
+      <h3>Reach out</h3>
+      <div class="citems">
+        <div class="cit"><div class="cico">✉️</div><div class="cdet"><span class="clbl">Email</span><span class="cval"><a href="mailto:eliasriv@gmail.com">eliasriv@gmail.com</a></span></div></div>
+        <div class="cit"><div class="cico">💼</div><div class="cdet"><span class="clbl">LinkedIn</span><span class="cval"><a href="https://www.linkedin.com/in/riveraelias/" target="_blank">linkedin.com/in/riveraelias</a></span></div></div>
+        <div class="cit"><div class="cico">📍</div><div class="cdet"><span class="clbl">Location</span><span class="cval">Quito, Ecuador · Remote worldwide</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Elias Rivera · Full Stack CMS Engineer · WordPress & Drupal Specialist · Open to remote opportunities</footer>
+
+<script>
+const fbs=document.querySelectorAll('.fb'),cs=document.querySelectorAll('.pcard'),pc=document.getElementById('pc');
+fbs.forEach(b=>b.addEventListener('click',()=>{
+  fbs.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const f=b.dataset.f;let n=0;
+  cs.forEach(c=>{const s=f==='all'||c.dataset.cms===f;c.classList.toggle('gone',!s);if(s)n++;});
+  pc.textContent=n+' project'+(n!==1?'s':'');
+}));
+</script>
+</body>
+</html>
